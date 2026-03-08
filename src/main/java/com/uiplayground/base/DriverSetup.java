@@ -7,9 +7,9 @@ import org.openqa.selenium.WebDriver;
 import java.time.Duration;
 
 public class DriverSetup {
-    WebDriver setupDriver(Browser browser) {
+    WebDriver setupDriver(Browser browser, String testName) {
         DriverManager driverManager = DriverManager.getInstance();
-        driverManager.setDriver(browser);
+        driverManager.setDriver(browser, testName);
         WebDriver driver = driverManager.getDriver();
         driver.manage().window().setSize(new Dimension(1920, 1080));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
