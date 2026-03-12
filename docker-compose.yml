@@ -1,0 +1,66 @@
+version: "3.7"
+
+services:
+  selenium-hub:
+    image: selenium/hub:3.141.59
+    container_name: selenium-hub
+    ports:
+      - "4444:4444"
+    environment:
+      GRID_MAX_SESSION: 16
+      GRID_BROWSER_TIMEOUT: 300
+      GRID_TIMEOUT: 300
+
+  chrome:
+    image: selenium/node-chrome:3.141.59
+    container_name: selenium-node-chrome
+    depends_on:
+      - selenium-hub
+    environment:
+      # register to the hub
+      - HUB_HOST=selenium-hub
+      - HUB_PORT=4444
+      - NODE_MAX_SESSION=5
+      - NODE_MAX_INSTANCES=5
+    volumes:
+      # shared memory improves Chrome stability
+      - /dev/shm:/dev/shm
+
+  firefox:
+    image: selenium/node-firefox:3.141.59
+    container_name: selenium-node-firefox
+    depends_on:
+      - selenium-hub
+    environment:
+      - HUB_HOST=selenium-hub
+      - HUB_PORT=4444
+      - NODE_MAX_SESSION=5
+      - NODE_MAX_INSTANCES=5
+    volumes:
+      - /dev/shm:/dev/shm
+
+  video:
+    image: selenium/video:ffmpeg-8.0-20260222
+    container_name: selenium-video
+    depends_on:
+      - selenium-hub
+    environment:
+      # where to find the hub
+      - HUB_HOST=selenium-hub
+      - HUB_PORT=4444
+      # video settings (adjust to taste)
+      - SCREEN_WIDTH=1920
+      - SCREEN_HEIGHT=1080
+      - FPS=15
+      - QUALITY=5
+      - VIDEO_OUTPUT_DIR=/videos
+    volumes:
+      # recordings will be accessible on the host in ./videos
+      - ./videos:/videos
+    # expose port 8080 if you want to browse the video-server (not strictly required)
+    ports:
+      - "8080:8080"
+
+networks:
+  default:
+    driver: bridge
