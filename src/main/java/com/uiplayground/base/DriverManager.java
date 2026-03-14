@@ -73,7 +73,8 @@ public class DriverManager {
 
         try {
             // Replace with your actual Docker Grid URL
-            return new RemoteWebDriver(new URL("http://localhost:4444"), capabilities);
+            return new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities);
+            // Grid 4 still accepts /wd/hub for backwards compatibility, so this works fine.
         } catch (MalformedURLException e) {
             throw new RuntimeException("Invalid Grid URL", e);
         }
