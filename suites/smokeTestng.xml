@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="UiPlaygroundSuite" parallel="none">
+    <listeners>
+        <listener class-name="com.uiplayground.listeners.TestFailedListener"/>
+        <listener class-name="com.uiplayground.listeners.RetryTransformer"/>
+    </listeners>
+    <test name="UiPlaygroundTests">
+<!--        <packages>-->
+<!--            &lt;!&ndash; run all tests in this package &ndash;&gt;-->
+<!--            <package name="com.uiplayground.tests"/>-->
+<!--        </packages>-->
+        <classes>
+            <class name="tests.DynamicIdTest"/>
+        </classes>
+    </test>
+</suite>
