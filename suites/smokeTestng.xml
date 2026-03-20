@@ -12,7 +12,7 @@
 <!--            <package name="com.uiplayground.tests"/>-->
 <!--        </packages>-->
         <classes>
-            <class name="tests.DynamicIdTest"/>
+            <class name="tests.web.DynamicIdTest"/>
         </classes>
     </test>
 </suite>
