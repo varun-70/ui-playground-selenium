@@ -1,6 +1,6 @@
-package com.uiplayground.pages;
+package com.uiplayground.pages.web.pages;
 
-import com.uiplayground.pages.component.base.BasePage;
+import com.uiplayground.pages.web.component.base.BasePage;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

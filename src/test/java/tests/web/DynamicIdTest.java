@@ -1,8 +1,8 @@
-package tests;
+package tests.web;
 
 import com.uiplayground.base.BaseTest;
-import com.uiplayground.pages.HomePage;
-import com.uiplayground.pages.PlaygroundExamplesPage;
+import com.uiplayground.pages.mobile.HomePage;
+import com.uiplayground.pages.mobile.PlaygroundExamplesPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

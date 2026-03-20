@@ -1,4 +1,4 @@
-package com.uiplayground.pages.component.base;
+package com.uiplayground.pages.web.component.base;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
